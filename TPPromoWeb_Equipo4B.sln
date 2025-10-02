@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35425.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPPromoWeb_Equipo4B", "TPPromoWeb_Equipo4B\TPPromoWeb_Equipo4B.csproj", "{9668775D-7909-433D-9900-9043042EB714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{A61BC60B-42C6-47E6-A01C-AAB81A981CFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio\negocio.csproj", "{28C23314-1A2C-474E-B416-8D5F9C2A4D5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{9668775D-7909-433D-9900-9043042EB714}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9668775D-7909-433D-9900-9043042EB714}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9668775D-7909-433D-9900-9043042EB714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A61BC60B-42C6-47E6-A01C-AAB81A981CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A61BC60B-42C6-47E6-A01C-AAB81A981CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A61BC60B-42C6-47E6-A01C-AAB81A981CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A61BC60B-42C6-47E6-A01C-AAB81A981CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C23314-1A2C-474E-B416-8D5F9C2A4D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C23314-1A2C-474E-B416-8D5F9C2A4D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C23314-1A2C-474E-B416-8D5F9C2A4D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C23314-1A2C-474E-B416-8D5F9C2A4D5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
