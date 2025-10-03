@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EleccionPremio.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
@@ -78,6 +79,13 @@
     </Compile>
     <Compile Include="altaCliente.master.designer.cs">
       <DependentUpon>altaCliente.master</DependentUpon>
+    </Compile>
+    <Compile Include="EleccionPremio.aspx.cs">
+      <DependentUpon>EleccionPremio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EleccionPremio.aspx.designer.cs">
+      <DependentUpon>EleccionPremio.aspx</DependentUpon>
     </Compile>
     <Compile Include="eleccionPremio.master.cs">
       <DependentUpon>eleccionPremio.master</DependentUpon>

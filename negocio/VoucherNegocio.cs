@@ -10,6 +10,8 @@ namespace negocio
 {
     public class VoucherNegocio
     {
+       
+
         public List<Voucher> Listar()
         {
             List<Voucher> l = new List<Voucher>();
@@ -18,16 +20,16 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("select * from Vouchers");
+                datos.setearConsulta("SELECT CodigoVoucher, IdCliente, FechaCanje, IdArticulo FROM Vouchers");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     v = new Voucher();
                     v.CodigoVoucher = (string)datos.Lector["CodigoVoucher"];
-                    v.IdCliente = (int)datos.Lector["IdCliente"];
-                    v.FechaCanje = (DateTime)datos.Lector["FechaCanje"];
-                    v.IdArticulo = (int)datos.Lector["IdArticulo"];
+                    if(!(datos.Lector["IdCliente"] is DBNull)) v.IdCliente = (int)datos.Lector["IdCliente"];
+                    if (!(datos.Lector["FechaCanje"] is DBNull)) v.FechaCanje = (DateTime)datos.Lector["FechaCanje"];
+                    if (!(datos.Lector["IdArticulo"] is DBNull)) v.IdArticulo = (int)datos.Lector["IdArticulo"];
                     l.Add(v);
                 }
 
@@ -35,7 +37,7 @@ namespace negocio
             }
             catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
             finally
             {
@@ -65,6 +67,31 @@ namespace negocio
                 accesoDatos.cerrarConexion();
             }
 
+        }
+        public int ComprobarVoucher(List<Voucher> listVoucher, string voucher)
+        {
+            try
+            {
+                foreach (Voucher v in listVoucher)
+                {
+                    if (v.CodigoVoucher == voucher)
+                    {
+                        if (v.IdCliente > 0) 
+                        {
+                            return 1;
+                        } else 
+                        {
+                            return 2;
+                        } 
+                    }
+                }
+                return 0;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }            
         }
     }
 }
