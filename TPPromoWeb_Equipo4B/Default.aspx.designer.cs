@@ -11,7 +11,7 @@ namespace TPPromoWeb_Equipo4B
 {
 
 
-    public partial class WebForm1
+    public partial class Default
     {
 
         /// <summary>

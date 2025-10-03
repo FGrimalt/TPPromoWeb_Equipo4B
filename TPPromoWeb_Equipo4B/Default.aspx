@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPagePromo.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TPPromoWeb_Equipo4B.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPagePromo.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TPPromoWeb_Equipo4B.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -10,10 +10,9 @@
                 <asp:TextBox runat="server" class="form-control" ID="txtIngVoucher" />
             </div>
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="button">Comprobar</button>
+                <asp:Button runat ="server" class="btn btn-primary" type="button" Text="Comprobar" OnClick="btnComprobar"/>                
             </div>
         </div>
     </div>
-
 
 </asp:Content>
