@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI;
+using negocio;
+using dominio;
+using System.Collections.Generic;
+
 
 namespace TPPromoWeb_Equipo4B
 {
@@ -11,7 +12,34 @@ namespace TPPromoWeb_Equipo4B
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                CargarPremios();
+            }
+        }
 
+        private void CargarPremios()
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            List<Articulo> listaArticulos = articuloNegocio.Listar();
+
+            foreach (Articulo articulo in listaArticulos)
+            {
+                string prImagen = articulo.Imagen.Count > 0 ? articulo.Imagen[0].ImagenUrl : "img/placeholder.png";
+
+                phPremios.Controls.Add(new LiteralControl($@"
+        <div class='col-md-4 mb-4'>
+            <div class='card h-100'>
+                <img src='{prImagen}' class='card-img-top' alt='{articulo.Nombre}' />
+                <div class='card-body text-center'>
+                    <h5 class='card-title'>{articulo.Nombre}</h5>
+                    <p class='card-text'>{articulo.Descripcion}</p>
+                    <a href='altaCliente.aspx?id={articulo.Id}' class='btn btn-primary'>Elegir</a>
+                </div>
+            </div>
+        </div>
+    "));
+            }
         }
     }
 }
