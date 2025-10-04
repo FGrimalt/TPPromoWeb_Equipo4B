@@ -13,7 +13,7 @@
             }
             errorSpan.style.display = 'none';
             return true;
-        }
+        } ///
     </script>
 </asp:Content>
 
