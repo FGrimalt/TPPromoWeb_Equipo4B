@@ -14,26 +14,27 @@ namespace negocio
 
         public SqlDataReader Lector
         {
-            get { return lector;  }
+            get { return lector; }
         }
         public AccesoDatos()
         {
 
-            conexion = new SqlConnection("Server = localhost, 1433; Database = PROMOS_DB; User Id = sa; Password = Facu-123456;TrustServerCertificate=True;");
+            //conexion = new SqlConnection("Server = localhost, 1433; Database = PROMOS_DB; User Id = sa; Password = Facu-123456;TrustServerCertificate=True;");
+            conexion = new SqlConnection("Server = localhost, 1433; Database = PROMOS_DB; User Id = sa; Password = BaseDeDatos#2;TrustServerCertificate=True;");
             comando = new SqlCommand();
-            
+
         }
 
-        public void setearConsulta (String consulta)
+        public void setearConsulta(String consulta)
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
         }
 
-        public void ejecutarLectura ()
+        public void ejecutarLectura()
         {
             comando.Connection = conexion;
-           
+
             try
             {
                 conexion.Open();
@@ -67,10 +68,24 @@ namespace negocio
 
         public void cerrarConexion()
         {
-            if(lector != null)
+            if (lector != null)
                 lector.Close();
             conexion.Close();
         }
 
+        public int ejecutarReturn()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                return int.Parse(comando.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }
