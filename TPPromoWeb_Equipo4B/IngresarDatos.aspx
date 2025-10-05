@@ -2,6 +2,46 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
+     <script>
+         
+         function validarCampos() {
+             const campos = [
+                '<%= txtNombre.ClientID %>',
+                '<%= txtApellido.ClientID %>',
+                '<%= txtEmail.ClientID %>',
+                '<%= txtDireccion.ClientID %>',
+                '<%= txtCiudad.ClientID %>',
+                '<%= txtCp.ClientID %>'
+            ];
+
+            const boton = document.getElementById('<%= btnParticipar.ClientID %>');
+             let todosCompletos = true;
+
+             campos.forEach(id => {
+                 const campo = document.getElementById(id);
+                 if (!campo || campo.value.trim() === '') {
+                     todosCompletos = false;
+                 }
+             });
+
+             boton.disabled = !todosCompletos;
+         }
+
+         function validarCheckbox() {
+             var checkbox = document.getElementById('checkbox');
+             var errorSpan = document.getElementById('checkboxError');
+
+             if (!checkbox.checked) {
+                 errorSpan.style.display = 'inline';
+                 return false;
+             }
+             errorSpan.style.display = 'none';
+             return true;
+         }
+     </script>
+
+     
+
     <script>
         function validarCheckbox() {
             var checkbox = document.getElementById('checkbox');
@@ -55,45 +95,45 @@
 
                     <div class="mb-3">
                         <label for="txtNombre" class="form-label">Nombre</label>
-                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="" required="1" />
-
+                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" Enabled="false" oninput="validarCampos()"/>
                         <div class="mb-3">
-                            <label for="txtApellido" class="form-label">Apellido</label>
+                         <label for="txtApellido" class="form-label">Apellido</label>
 
-                            <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" placeholder="" required="1" />
+                         <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" Enabled="false" oninput="validarCampos()" />
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="txtEmail" class="form-label">E-mail</label>
                         <div class="input-group">
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="" required="1" />
+                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"  Enabled="false" oninput="validarCampos()" />
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="txtDireccion" class="form-label">Dirección</label>
-                        <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" placeholder="" required="1" />
+                        <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" Enabled="false" oninput="validarCampos()" />
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="txtCiudad" class="form-label">Ciudad</label>
-                    <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" placeholder="Ciudad" required="1" />
+                    <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control"  Enabled="false" oninput="validarCampos()" />
                 </div>
 
                 <div class="mb-3">
                     <label for="txtCp" class="form-label">Código Postal</label>
-                    <asp:TextBox ID="txtCp" runat="server" CssClass="form-control" placeholder="" required="1" />
+                    <asp:TextBox ID="txtCp" runat="server" CssClass="form-control"  Enabled="false" oninput="validarCampos()" />
                 </div>
 
                 <asp:Button
-                    ID="btnParticipar"
-                    runat="server"
-                    Text="Participar"
-                    CssClass="btn btn-success w-100"
-                    OnClientClick="return validarCheckbox();"
-                    OnClick="btnParticipar_Click"
-                    CausesValidation="true" />
+                 ID="btnParticipar"
+                 runat="server"
+                 Text="Participar"
+                 CssClass="btn btn-success w-100"
+                 Enabled="false"
+                 OnClientClick="return validarCheckbox();"
+                 OnClick="btnParticipar_Click"
+                 CausesValidation="true" />
 </asp:Content>
 
 
