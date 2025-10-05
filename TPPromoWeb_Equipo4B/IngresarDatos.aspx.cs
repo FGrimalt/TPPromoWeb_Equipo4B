@@ -18,36 +18,58 @@ namespace TPPromoWeb_Equipo4B
 
         protected void btnBuscarDni_Click(object sender, EventArgs e)
         {
-            if (txtDNI.Enabled == false)
-            {
-                Response.Redirect("IngresarDatos.aspx", false);
-                return;
-            }
-
-        }
-
-        protected void btnParticipar_Click(object sender, EventArgs e)
-        {
             ClienteNegocio clienteNegocio = new ClienteNegocio();
-            Clientes cliente = clienteNegocio.ChequearDNI(Convert.ToInt32(EliminarPuntos(txtDNI.Text)));
 
-            if (cliente == null)
+            Clientes clientes = clienteNegocio.ChequearDNI(Convert.ToInt32(EliminarPuntos(txtDNI.Text)));
+
+            if (clientes != null)
             {
-                cliente = new Clientes();
-                cliente.Documento = EliminarPuntos(txtDNI.Text);
-                cliente.Nombre = txtNombre.Text;
-                cliente.Apellido = txtApellido.Text;
-                cliente.Email = txtEmail.Text;
-                cliente.Direccion = txtDireccion.Text;
-                cliente.Ciudad = txtCiudad.Text;
-                cliente.CP = int.Parse(txtCp.Text);
-                cliente.Id = clienteNegocio.agregar(cliente);
+                lblMensaje.Text = "Cliente encontrado. Datos cargados automáticamente.";
+
+                txtNombre.Text = clientes.Nombre;
+                txtApellido.Text = clientes.Apellido;
+                txtEmail.Text = clientes.Email;
+                txtDireccion.Text = clientes.Direccion;
+                txtCiudad.Text = clientes.Ciudad;
+                txtCp.Text = clientes.CP.ToString();
+
+                txtDNI.Enabled = false; //BLOQUEO EL DNI PARA QUE NO LO EDITEN/CAMBIEN.
+            }
+            else
+            {
+                lblMensaje.Text = "No se encontró el DNI. Complete los datos.";
+
+                txtNombre.Text = "";
+                txtApellido.Text = "";
+                txtEmail.Text = "";
+                txtDireccion.Text = "";
+                txtCiudad.Text = "";
+                txtCp.Text = "";
             }
         }
 
-             private string EliminarPuntos(string dni)
+    protected void btnParticipar_Click(object sender, EventArgs e)
+    {
+        ClienteNegocio clienteNegocio = new ClienteNegocio();
+        Clientes cliente = clienteNegocio.ChequearDNI(Convert.ToInt32(EliminarPuntos(txtDNI.Text)));
+
+        if (cliente == null)
         {
-            return dni.Replace(".", "");
+            cliente = new Clientes();
+            cliente.Documento = EliminarPuntos(txtDNI.Text);
+            cliente.Nombre = txtNombre.Text;
+            cliente.Apellido = txtApellido.Text;
+            cliente.Email = txtEmail.Text;
+            cliente.Direccion = txtDireccion.Text;
+            cliente.Ciudad = txtCiudad.Text;
+            cliente.CP = int.Parse(txtCp.Text);
+            cliente.Id = clienteNegocio.agregar(cliente);
         }
     }
+
+    private string EliminarPuntos(string dni)
+    {
+        return dni.Replace(".", "");
+    }
+}
 }

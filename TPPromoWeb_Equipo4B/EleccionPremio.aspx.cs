@@ -34,7 +34,7 @@ namespace TPPromoWeb_Equipo4B
                 <div class='card-body text-center'>
                     <h5 class='card-title'>{articulo.Nombre}</h5>
                     <p class='card-text'>{articulo.Descripcion}</p>
-                    <a href='altaCliente.aspx?id={articulo.Id}' class='btn btn-primary'>Elegir</a>
+                    <a href='IngresarDatos.aspx?id={articulo.Id}' class='btn btn-primary'>Elegir</a>
                 </div>
             </div>
         </div>
