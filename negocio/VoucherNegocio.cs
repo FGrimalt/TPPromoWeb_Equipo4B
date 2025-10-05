@@ -9,9 +9,7 @@ using System.Threading.Tasks;
 namespace negocio
 {
     public class VoucherNegocio
-    {
-       
-
+    {   
         public List<Voucher> Listar()
         {
             List<Voucher> l = new List<Voucher>();
@@ -45,13 +43,13 @@ namespace negocio
             }
         }
 
-        public void Modificar(Voucher v)
+        public void Actualizar(Voucher v)
         {
             AccesoDatos accesoDatos = new AccesoDatos();
 
             try
             {
-                accesoDatos.setearConsulta("update ARTICULOS set IdCliente = @ic, FechaCanje = @fc, IdArticulo = @ia, Where CodigoVoucher = @cv");
+                accesoDatos.setearConsulta("update VOUCHERS set IdCliente = @ic, FechaCanje = @fc, IdArticulo = @ia Where CodigoVoucher = @cv");
                 accesoDatos.setearParametro("@ic", v.IdCliente);
                 accesoDatos.setearParametro("@fc", v.FechaCanje);
                 accesoDatos.setearParametro("@ia", v.IdArticulo);
@@ -60,7 +58,9 @@ namespace negocio
             }
             catch (Exception ex)
             {
-                
+
+                throw ex;
+
             }
             finally
             {

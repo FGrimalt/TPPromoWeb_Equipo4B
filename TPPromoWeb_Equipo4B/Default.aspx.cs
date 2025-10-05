@@ -30,7 +30,7 @@ namespace TPPromoWeb_Equipo4B
             {
                 case 2:
                     lblComprobacion.Text = "Voucher Correcto";
-                    Session.Add("CodigoVoucher", txtIngVoucher);
+                    Session.Add("CodigoVoucher", txtIngVoucher.Text);
                     Response.Redirect("EleccionPremio.aspx", false);
                     break;
                 case 1:

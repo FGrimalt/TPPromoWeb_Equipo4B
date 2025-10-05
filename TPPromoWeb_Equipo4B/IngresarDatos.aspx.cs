@@ -114,10 +114,20 @@ namespace TPPromoWeb_Equipo4B
                     return; // Detiene el proceso y no continúa con el registro
                 }
                 cliente.Id = clienteNegocio.agregar(cliente);
-
-                Session["NombreCliente"] = cliente.Nombre;
-                Response.Redirect("participacionExitosa.aspx");
             }
+
+            VoucherNegocio vn = new VoucherNegocio();
+            Voucher v = new Voucher();
+            DateTime fecha = DateTime.Now.Date;
+            v.FechaCanje = fecha;
+            v.IdArticulo = int.Parse(Request.QueryString["id"].ToString());
+            v.IdCliente = cliente.Id;
+            v.CodigoVoucher = Session["CodigoVoucher"].ToString();
+            vn.Actualizar(v);
+
+            Session["NombreCliente"] = cliente.Nombre;
+            Response.Redirect("participacionExitosa.aspx");
+
         }
 
         private string EliminarPuntos(string dni)
