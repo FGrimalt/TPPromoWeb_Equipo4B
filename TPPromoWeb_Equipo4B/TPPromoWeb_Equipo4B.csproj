@@ -67,6 +67,7 @@
     <Content Include="EleccionPremio.aspx" />
     <Content Include="Global.asax" />
     <Content Include="IngresarDatos.aspx" />
+    <Content Include="participacionExitosa.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -94,6 +95,13 @@
     </Compile>
     <Compile Include="IngresarDatos.aspx.designer.cs">
       <DependentUpon>IngresarDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="participacionExitosa.aspx.cs">
+      <DependentUpon>participacionExitosa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="participacionExitosa.aspx.designer.cs">
+      <DependentUpon>participacionExitosa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MasterPagePromo.Master.cs">

@@ -48,28 +48,31 @@ namespace TPPromoWeb_Equipo4B
             }
         }
 
-    protected void btnParticipar_Click(object sender, EventArgs e)
-    {
-        ClienteNegocio clienteNegocio = new ClienteNegocio();
-        Clientes cliente = clienteNegocio.ChequearDNI(Convert.ToInt32(EliminarPuntos(txtDNI.Text)));
-
-        if (cliente == null)
+        protected void btnParticipar_Click(object sender, EventArgs e)
         {
-            cliente = new Clientes();
-            cliente.Documento = EliminarPuntos(txtDNI.Text);
-            cliente.Nombre = txtNombre.Text;
-            cliente.Apellido = txtApellido.Text;
-            cliente.Email = txtEmail.Text;
-            cliente.Direccion = txtDireccion.Text;
-            cliente.Ciudad = txtCiudad.Text;
-            cliente.CP = int.Parse(txtCp.Text);
-            cliente.Id = clienteNegocio.agregar(cliente);
+            ClienteNegocio clienteNegocio = new ClienteNegocio();
+            Clientes cliente = clienteNegocio.ChequearDNI(Convert.ToInt32(EliminarPuntos(txtDNI.Text)));
+
+            if (cliente == null)
+            {
+                cliente = new Clientes();
+                cliente.Documento = EliminarPuntos(txtDNI.Text);
+                cliente.Nombre = txtNombre.Text;
+                cliente.Apellido = txtApellido.Text;
+                cliente.Email = txtEmail.Text;
+                cliente.Direccion = txtDireccion.Text;
+                cliente.Ciudad = txtCiudad.Text;
+                cliente.CP = int.Parse(txtCp.Text);
+                cliente.Id = clienteNegocio.agregar(cliente);
+
+                Session["NombreCliente"] = cliente.Nombre;
+                Response.Redirect("participacionExitosa.aspx");
+            }
+        }
+
+        private string EliminarPuntos(string dni)
+        {
+            return dni.Replace(".", "");
         }
     }
-
-    private string EliminarPuntos(string dni)
-    {
-        return dni.Replace(".", "");
-    }
-}
 }

@@ -12,20 +12,33 @@ namespace TPPromoWeb_Equipo4B
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CargarPremios();
+            /*
             if (!IsPostBack)
             {
                 CargarPremios();
             }
+            */
         }
-
         private void CargarPremios()
         {
+            phPremios.Controls.Clear();
+
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             List<Articulo> listaArticulos = articuloNegocio.Listar();
 
             foreach (Articulo articulo in listaArticulos)
             {
-                string prImagen = articulo.Imagen.Count > 0 ? articulo.Imagen[0].ImagenUrl : "img/placeholder.png";
+                string prImagen;
+                
+                if (!string.IsNullOrEmpty(articulo.Imagen[0].ImagenUrl))
+                {
+                    prImagen = articulo.Imagen[0].ImagenUrl;
+                }
+                else
+                {
+                    prImagen = "img/placeholder.png";
+                }
 
                 phPremios.Controls.Add(new LiteralControl($@"
         <div class='col-md-4 mb-4'>

@@ -45,10 +45,10 @@
                             OnClick="btnBuscarDni_Click"
                             OnClientClick="this.form.noValidate = true;" />
 
-                         <asp:Label 
-                            ID="lblMensaje" 
-                            runat="server" 
-                            ForeColor="Green" 
+                        <asp:Label
+                            ID="lblMensaje"
+                            runat="server"
+                            ForeColor="Green"
                             CssClass="mt-2 d-block">
                         </asp:Label>
                     </div>
@@ -70,30 +70,30 @@
                             <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="" required="1" />
                         </div>
                     </div>
-    <div class="mb-3">
-    <label for="txtDireccion" class="form-label">Dirección</label>
-    <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" placeholder="" required="1" />
-    </div>
-</div>
-                    
- <div class="mb-3">
-     <label for="txtCiudad" class="form-label">Ciudad</label>                 
-     <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" placeholder="Ciudad" required="1" />
-</div>
+                    <div class="mb-3">
+                        <label for="txtDireccion" class="form-label">Dirección</label>
+                        <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" placeholder="" required="1" />
+                    </div>
+                </div>
 
- <div class="mb-3">
-    <label for="txtCp" class="form-label">Código Postal</label> 
-    <asp:TextBox ID="txtCp" runat="server" CssClass="form-control" placeholder="" required="1" />
-</div>
+                <div class="mb-3">
+                    <label for="txtCiudad" class="form-label">Ciudad</label>
+                    <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" placeholder="Ciudad" required="1" />
+                </div>
 
-<asp:Button
-   ID="btnParticipar"
-   runat="server"
-   Text="Participar"
-   CssClass="btn btn-success w-100"
-   OnClientClick="return validarCheckbox();"
-   OnClick="btnParticipar_Click"
-   CausesValidation="true" />
+                <div class="mb-3">
+                    <label for="txtCp" class="form-label">Código Postal</label>
+                    <asp:TextBox ID="txtCp" runat="server" CssClass="form-control" placeholder="" required="1" />
+                </div>
+
+                <asp:Button
+                    ID="btnParticipar"
+                    runat="server"
+                    Text="Participar"
+                    CssClass="btn btn-success w-100"
+                    OnClientClick="return validarCheckbox();"
+                    OnClick="btnParticipar_Click"
+                    CausesValidation="true" />
 </asp:Content>
 
 
