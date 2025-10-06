@@ -12,8 +12,8 @@ namespace TPPromoWeb_Equipo4B
     public partial class IngresarDatos : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-         {
-
+        {
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
 
         protected void btnBuscarDni_Click(object sender, EventArgs e)
@@ -46,10 +46,10 @@ namespace TPPromoWeb_Equipo4B
                     txtCiudad.Text = clientes.Ciudad;
                     txtCp.Text = clientes.CP.ToString();
 
-            
+
                     txtDNI.Enabled = false;
 
-                    
+
                     btnParticipar.Enabled = true;
                 }
                 else
@@ -73,7 +73,7 @@ namespace TPPromoWeb_Equipo4B
                     txtCp.Enabled = true;
                     btnParticipar.Enabled = true;
 
-                    txtDNI.Enabled = false; 
+                    txtDNI.Enabled = false;
                 }
             }
             catch (FormatException)
@@ -92,13 +92,14 @@ namespace TPPromoWeb_Equipo4B
         {
             ClienteNegocio clienteNegocio = new ClienteNegocio();
             Clientes cliente = clienteNegocio.ChequearDNI(Convert.ToInt32(EliminarPuntos(txtDNI.Text)));
-                
+
             if (cliente == null)
             {
                 cliente = new Clientes();
                 cliente.Documento = EliminarPuntos(txtDNI.Text);
                 cliente.Nombre = txtNombre.Text;
                 cliente.Apellido = txtApellido.Text;
+
                 cliente.Email = txtEmail.Text;
                 cliente.Direccion = txtDireccion.Text;
                 cliente.Ciudad = txtCiudad.Text;

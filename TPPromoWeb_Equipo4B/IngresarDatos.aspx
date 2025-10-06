@@ -2,45 +2,45 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-     <script>
-         
-         function validarCampos() {
-             const campos = [
+    <script>
+
+        function validarCampos() {
+            const campos = [
                 '<%= txtNombre.ClientID %>',
                 '<%= txtApellido.ClientID %>',
                 '<%= txtEmail.ClientID %>',
                 '<%= txtDireccion.ClientID %>',
                 '<%= txtCiudad.ClientID %>',
                 '<%= txtCp.ClientID %>'
-            ];
+             ];
 
-            const boton = document.getElementById('<%= btnParticipar.ClientID %>');
-             let todosCompletos = true;
+             const boton = document.getElementById('<%= btnParticipar.ClientID %>');
+            let todosCompletos = true;
 
-             campos.forEach(id => {
-                 const campo = document.getElementById(id);
-                 if (!campo || campo.value.trim() === '') {
-                     todosCompletos = false;
-                 }
-             });
+            campos.forEach(id => {
+                const campo = document.getElementById(id);
+                if (!campo || campo.value.trim() === '') {
+                    todosCompletos = false;
+                }
+            });
 
-             boton.disabled = !todosCompletos;
-         }
+            boton.disabled = !todosCompletos;
+        }
 
-         function validarCheckbox() {
-             var checkbox = document.getElementById('checkbox');
-             var errorSpan = document.getElementById('checkboxError');
+        function validarCheckbox() {
+            var checkbox = document.getElementById('checkbox');
+            var errorSpan = document.getElementById('checkboxError');
 
-             if (!checkbox.checked) {
-                 errorSpan.style.display = 'inline';
-                 return false;
-             }
-             errorSpan.style.display = 'none';
-             return true;
-         }
-     </script>
+            if (!checkbox.checked) {
+                errorSpan.style.display = 'inline';
+                return false;
+            }
+            errorSpan.style.display = 'none';
+            return true;
+        }
+    </script>
 
-     
+
 
     <script>
         function validarCheckbox() {
@@ -58,11 +58,6 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Promo Ganá!</span>
-        </div>
-    </nav>
     <div></div>
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -74,6 +69,7 @@
                         <label for="txtDNI" class="form-label">DNI</label>
 
                         <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control" placeholder="ingrese DNI" type="text" required="1" />
+                        <asp:RegularExpressionValidator ErrorMessage="El DNI debe contener solo números sin puntos ni espacios." ControlToValidate="txtDNI" ValidationExpression="^[0-9]+$" ForeColor="Red" runat="server" />
 
                         <asp:Button
                             ID="btnBuscarDNI"
@@ -95,18 +91,22 @@
 
                     <div class="mb-3">
                         <label for="txtNombre" class="form-label">Nombre</label>
-                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" Enabled="false" oninput="validarCampos()"/>
-                        <div class="mb-3">
-                         <label for="txtApellido" class="form-label">Apellido</label>
+                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" Enabled="false" oninput="validarCampos()" />
+                        <asp:RegularExpressionValidator ErrorMessage="Solo se permiten letras." ControlToValidate="txtNombre" ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" ForeColor="Red" runat="server" />
 
-                         <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" Enabled="false" oninput="validarCampos()" />
+                        <div class="mb-3">
+                            <label for="txtApellido" class="form-label">Apellido</label>
+                            <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" Enabled="false" oninput="validarCampos()" />
+                            <asp:RegularExpressionValidator ErrorMessage="Solo se permiten letras." ControlToValidate="txtApellido" ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" ForeColor="Red" runat="server" />
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="txtEmail" class="form-label">E-mail</label>
                         <div class="input-group">
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"  Enabled="false" oninput="validarCampos()" />
+                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Enabled="false" oninput="validarCampos()" />
+                            <asp:RegularExpressionValidator ErrorMessage="Ingrese un email válido." ControlToValidate="txtEmail" ValidationExpression="^([\w-\.]+)@(([0−9]1,3\.[0−9]1,3\.[0−9]1,3\.)|(([\w−]+\.)+))([a−zA−Z]2,4|[0−9]1,3)(
+?)$" ForeColor="Red" runat="server" />
                         </div>
                     </div>
                     <div class="mb-3">
@@ -117,23 +117,24 @@
 
                 <div class="mb-3">
                     <label for="txtCiudad" class="form-label">Ciudad</label>
-                    <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control"  Enabled="false" oninput="validarCampos()" />
+                    <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" Enabled="false" oninput="validarCampos()" />
+                    <asp:RegularExpressionValidator ErrorMessage="Solo se permiten letras." ControlToValidate="txtCiudad" ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" ForeColor="Red" runat="server" />
                 </div>
 
                 <div class="mb-3">
                     <label for="txtCp" class="form-label">Código Postal</label>
-                    <asp:TextBox ID="txtCp" runat="server" CssClass="form-control"  Enabled="false" oninput="validarCampos()" />
+                    <asp:TextBox ID="txtCp" runat="server" CssClass="form-control" Enabled="false" oninput="validarCampos()" />
                 </div>
 
                 <asp:Button
-                 ID="btnParticipar"
-                 runat="server"
-                 Text="Participar"
-                 CssClass="btn btn-success w-100"
-                 Enabled="false"
-                 OnClientClick="return validarCheckbox();"
-                 OnClick="btnParticipar_Click"
-                 CausesValidation="true" />
+                    ID="btnParticipar"
+                    runat="server"
+                    Text="Participar"
+                    CssClass="btn btn-success w-100"
+                    Enabled="false"
+                    OnClientClick="return validarCheckbox();"
+                    OnClick="btnParticipar_Click"
+                    CausesValidation="true" />
 </asp:Content>
 
 
