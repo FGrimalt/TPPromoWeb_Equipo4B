@@ -15,8 +15,8 @@
     <form id="form1" runat="server">
         </div>
 
-        <div class="bg-secondary text-white text-center py-2">
-            <h4 class="mb-0">bg-secondary!</h4>
+        <div class="bg-secondary text-white text-center py-2 mb-3">
+            <h4 class="mb-0">Promo Ganá!</h4>
         </div>
 
         <div class="container">
